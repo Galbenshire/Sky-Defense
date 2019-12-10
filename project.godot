@@ -18,6 +18,17 @@ _global_script_class_icons={
 config/name="Sky Defence"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=256
+window/size/height=240
+window/size/test_width=768
+window/size/test_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
