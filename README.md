@@ -1,4 +1,4 @@
-# Sky-Defense
+# Sky Defense
 Missles are raining from the sky, aimed at the cities below. It is up to you to shoot them down before they can cause damage.  
 Fight fire with fire... or missiles in this case.
 
