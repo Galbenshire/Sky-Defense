@@ -1,5 +1,7 @@
 extends Node2D
 
+const EXPLOSION := preload("res://entities/explosion/Explosion.tscn")
+
 export (float) var move_speed : float = 100.0
 export (float) var distance_to_travel : float = 200.0
 
@@ -23,4 +25,10 @@ func _update_distance_to_travel(delta : float) -> void:
 		_explode()
 
 func _explode() -> void:
+	_spawn_explosion()
 	queue_free()
+
+func _spawn_explosion() -> void:
+	var explo = EXPLOSION.instance()
+	explo.global_position = global_position
+	get_parent().add_child(explo)
