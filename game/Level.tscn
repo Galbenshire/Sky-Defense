@@ -29,16 +29,18 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Entities" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="MissileBase" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 16, 224 )
+fire_action = "player_missile_left"
 
 [node name="MissileBase2" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 240, 224 )
+fire_action = "player_missile_right"
 
 [node name="PlayerCursor" parent="Entities" instance=ExtResource( 4 )]
 position = Vector2( 128, 108 )
+move_speed = 200.0
 boundary = Vector2( 126, 90 )
 
 [node name="HUD" type="Control" parent="."]
@@ -51,3 +53,5 @@ margin_right = 256.0
 margin_bottom = 14.0
 text = "HUD TEXT HERE"
 align = 1
+[connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileBase" method="_on_target_position_received"]
+[connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileBase2" method="_on_target_position_received"]

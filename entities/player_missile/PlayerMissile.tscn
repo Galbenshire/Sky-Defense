@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/player_missile/PlayerMissile.gd" type="Script" id=1]
 [ext_resource path="res://SinglePixel.png" type="Texture" id=2]
+[ext_resource path="res://entities/trail/Trail.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1, 1 )
@@ -15,6 +16,8 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
+
+[node name="Trail" parent="." instance=ExtResource( 3 )]
 
 [node name="Hitbox" type="Area2D" parent="."]
 editor/display_folded = true

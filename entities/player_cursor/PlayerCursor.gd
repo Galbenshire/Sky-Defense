@@ -1,6 +1,8 @@
 tool
 extends Node2D
 
+signal position_emitted(event, position)
+
 export (float) var move_speed : float = 200.0
 export (Vector2) var boundary : Vector2 setget set_boundary
 
@@ -13,7 +15,13 @@ func _draw() -> void:
 	if Engine.editor_hint:
 		_draw_boundary()
 
-func _physics_process(delta : float):
+func _unhandled_input(event : InputEvent) -> void:
+	if !event is InputEventKey and !event is InputEventJoypadButton:
+		return
+	
+	emit_signal("position_emitted", event, global_position)
+
+func _physics_process(delta : float) -> void:
 	if Engine.editor_hint:
 		return
 	
@@ -38,6 +46,3 @@ func _clamp_cursor() -> void:
 func _draw_boundary() -> void:
 	var boundary_rect = Rect2(-boundary, boundary * 2)
 	draw_rect(boundary_rect, Color.white, false)
-
-func _on_angle_requested(missile_base : Node2D) -> void:
-	pass
