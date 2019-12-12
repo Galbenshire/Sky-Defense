@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/player_missile/PlayerMissile.gd" type="Script" id=1]
+[ext_resource path="res://SinglePixel.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 1 )
+
+[node name="PlayerMissile" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Hitbox" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0.5, 0.5 )
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
