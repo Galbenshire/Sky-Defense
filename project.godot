@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Sky Defence"
 run/main_scene="res://game/Level.tscn"
-config/icon="res://icon.png"
+config/icon="res://Icon.png"
 
 [display]
 
@@ -124,6 +124,12 @@ player_missile_right={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="structure"
+2d_physics/layer_2="missile"
+2d_physics/layer_3="explosion"
 
 [rendering]
 

@@ -5,7 +5,7 @@ onready var MissileSpawn : Position2D = $MissileSpawn
 export (int, 1, 32) var max_missile_ammo : int = 15
 export (String) var fire_action : String
 
-const MISSILE := preload("res://entities/player_missile/PlayerMissile.tscn")
+const MISSILE := preload("res://entities/missiles/player_missile/PlayerMissile.tscn")
 
 var _missile_ammo : int setget set_missile_ammo
 
@@ -24,8 +24,8 @@ func _fire_missile(target_position : Vector2) -> void:
 	var missile = MISSILE.instance()
 	missile.global_position = MissileSpawn.global_position
 	missile.set_move_direction(target_position.angle_to_point(MissileSpawn.global_position))
-	missile.distance_to_travel = (MissileSpawn.global_position - target_position).length()
 	get_parent().add_child(missile)
+	missile.DistanceGoal.goal = (MissileSpawn.global_position - target_position).length()
 
 func _can_fire_missile() -> bool:
 	return _missile_ammo > 0
