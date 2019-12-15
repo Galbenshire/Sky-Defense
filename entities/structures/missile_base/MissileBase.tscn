@@ -1,12 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://entities/missile_base/MissileBase.gd" type="Script" id=1]
-[ext_resource path="res://entities/missile_base/MissileBase.png" type="Texture" id=2]
+[ext_resource path="res://entities/structures/missile_base/MissileBase.gd" type="Script" id=1]
+[ext_resource path="res://entities/structures/missile_base/MissileBase.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[node name="MissileBase" type="Node2D"]
+[node name="MissileBase" type="Node2D" groups=[
+"structure",
+]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -34,7 +36,8 @@ align = 1
 [node name="Hitbox" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 0, -8 )
-collision_mask = 2
+monitoring = false
+collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 1 )

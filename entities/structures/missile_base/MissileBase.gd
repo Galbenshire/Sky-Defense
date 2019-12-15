@@ -20,6 +20,12 @@ func set_missile_ammo(value : int) -> void:
 func reset() -> void:
 	set_missile_ammo(max_missile_ammo)
 
+func can_target() -> bool:
+	return true
+
+func take_damage() -> void:
+	self._missile_ammo -= 7
+
 func _fire_missile(target_position : Vector2) -> void:
 	var missile = MISSILE.instance()
 	missile.global_position = MissileSpawn.global_position

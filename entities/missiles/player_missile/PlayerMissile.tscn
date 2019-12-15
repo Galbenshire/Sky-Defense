@@ -6,8 +6,9 @@
 [ext_resource path="res://component/on_death_spawner/OnDeathSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/explosion/Explosion.tscn" type="PackedScene" id=5]
 
-[node name="PlayerMissile" instance=ExtResource( 1 )]
+[node name="PlayerMissile" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+move_speed = 150.0
 
 [node name="DistanceGoal" parent="." index="0" instance=ExtResource( 3 )]
 
