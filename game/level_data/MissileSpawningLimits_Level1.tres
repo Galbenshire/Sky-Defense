@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://game/level_data/MissileSpawningLimits.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-total_missiles = 12
-max_missiles_on_screen = 4
-minimum_missile_threshold = 2

@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://entities/missile_spawner/MissileSpawner.gd" type="Script" id=1]
-[ext_resource path="res://game/level_data/MissileSpawningLimits_Level1.tres" type="Resource" id=2]
-
-[node name="MissileSpawner" type="Node2D"]
-script = ExtResource( 1 )
-spawning_limits = ExtResource( 2 )
