@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1, 1 )
 
-[node name="EnemyMissile" index="0" groups=[
+[node name="EnemyMissile" groups=[
 "enemy_missile",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )

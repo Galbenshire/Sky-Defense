@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "MissileSpawningLimits",
+"language": "GDScript",
+"path": "res://game/level_data/MissileSpawningLimits.gd"
+} ]
 _global_script_class_icons={
-
+"MissileSpawningLimits": ""
 }
 
 [application]
