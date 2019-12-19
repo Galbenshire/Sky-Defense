@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://entities/missile_silo/MissileSilo.gd" type="Script" id=1]
+
+[node name="MissileSilo" type="Node2D" groups=[
+"structure",
+]]
+editor/display_folded = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MissileSpawn" type="Position2D" parent="."]
+position = Vector2( 0, -13 )
+
+[node name="AmmoCount" type="Label" parent="."]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 6.0
+text = "0"
+align = 1
+
+[node name="Hitbox" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, -8 )
+monitoring = false
+collision_mask = 0
+
+[node name="Collision" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PoolVector2Array( -8, -8, 8, -8, 16, 8, -16, 8 )

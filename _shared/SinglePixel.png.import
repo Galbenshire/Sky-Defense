@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SinglePixel.png-b161a84859b3dd38b349a070481bcec0.stex"
+path="res://.import/SinglePixel.png-dfbe60d8381653027122077f8fee331a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SinglePixel.png"
-dest_files=[ "res://.import/SinglePixel.png-b161a84859b3dd38b349a070481bcec0.stex" ]
+source_file="res://_shared/SinglePixel.png"
+dest_files=[ "res://.import/SinglePixel.png-dfbe60d8381653027122077f8fee331a.stex" ]
 
 [params]
 
