@@ -5,7 +5,6 @@
 [node name="MissileSilo" type="Node2D" groups=[
 "structure",
 ]]
-editor/display_folded = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

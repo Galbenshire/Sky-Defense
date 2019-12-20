@@ -34,13 +34,22 @@ __meta__ = {
 [node name="PlayerCursor" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 128, 108 )
 boundary = Vector2( 126, 90 )
+control_mode = 1
 
 [node name="MissileSilo" parent="Entities" instance=ExtResource( 4 )]
 position = Vector2( 16, 224 )
+input_action = "player_missile_left"
+
+[node name="MissileSilo2" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 240, 224 )
+input_action = "player_missile_right"
 
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
+[connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileSilo" method="_on_PlayerCursor_position_emitted"]
+[connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileSilo2" method="_on_PlayerCursor_position_emitted"]

@@ -22,12 +22,12 @@ func _draw() -> void:
 		_draw_boundary()
 
 func _unhandled_input(event : InputEvent) -> void:
-	if !event is InputEventKey and !event is InputEventJoypadButton:
+	if !_is_valid_input_event(event):
 		return
 	
 	emit_signal("position_emitted", event, global_position)
 
-func _physics_process(delta : float):
+func _physics_process(delta : float) -> void:
 	if Engine.editor_hint:
 		return
 	
@@ -57,6 +57,10 @@ func _move_cursor_with_mouse() -> void:
 func _clamp_cursor() -> void:
 	position.x = clamp(position.x, _start_position.x - boundary.x, _start_position.x + boundary.x)
 	position.y = clamp(position.y, _start_position.y - boundary.y, _start_position.y + boundary.y)
+
+func _is_valid_input_event(event : InputEvent) -> bool:
+	return (control_mode == CONTROL_MODE.WITH_KEYS and (event is InputEventJoypadButton or event is InputEventKey)) \
+			or (control_mode == CONTROL_MODE.WITH_MOUSE and event is InputEventMouseButton)
 
 func _draw_boundary() -> void:
 	var boundary_rect = Rect2(-boundary, boundary * 2)
