@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://game/settings/LevelSettings.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+missile_count = 12
+max_missiles_on_screen = 4
+minimum_missile_threshold = 2
+missile_speed = 40.0
+score_multiplier = 1
