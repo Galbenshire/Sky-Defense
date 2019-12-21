@@ -1,6 +1,13 @@
 extends Node2D
 
-onready var parent_of_owner := owner.get_parent()
+const EXPLOSION := preload("res://entities/explosion/Explosion.tscn")
+
+onready var _parent_of_owner := owner.get_parent()
 
 func _exit_tree() -> void:
-	print("Explode!")
+	_explode()
+
+func _explode() -> void:
+	var explosion = EXPLOSION.instance()
+	explosion.position = global_position
+	_parent_of_owner.add_child(explosion)

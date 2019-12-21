@@ -32,6 +32,7 @@ func _shoot_missile(target_position : Vector2) -> void:
 	missile.speed = 150.0
 	missile.direction = MissileSpawn.global_position.direction_to(target_position)
 	get_parent().add_child(missile)
+	missile.DistanceGoal.goal = (MissileSpawn.global_position - target_position).length()
 
 func _can_shoot(event : InputEvent) -> bool:
 	return missile_count > 0 and event.is_action_pressed(input_action)
