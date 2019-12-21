@@ -1,6 +1,9 @@
 extends Node2D
 
+onready var MissileSpawn : Position2D = $MissileSpawn
 onready var AmmoCount : Label = $AmmoCount
+
+const MISSILE := preload("res://entities/projectiles/player_missile/PlayerMissile.tscn")
 
 export (String) var input_action : String
 
@@ -18,18 +21,22 @@ func can_target() -> bool:
 	return true
 
 func take_damage_from_missile() -> void:
-	pass
+	self.missile_count -= 7
 
 func update_ammout_count_label() -> void:
 	AmmoCount.text = str(missile_count)
 
-func _shoot() -> void:
-	print("%s is shooting" % str(name))
-	self.missile_count -= 1
+func _shoot_missile(target_position : Vector2) -> void:
+	var missile = MISSILE.instance()
+	missile.global_position = MissileSpawn.global_position
+	missile.speed = 150.0
+	missile.direction = MissileSpawn.global_position.direction_to(target_position)
+	get_parent().add_child(missile)
 
 func _can_shoot(event : InputEvent) -> bool:
 	return missile_count > 0 and event.is_action_pressed(input_action)
 
 func _on_PlayerCursor_position_emitted(event : InputEvent, cursor_position : Vector2) -> void:
 	if _can_shoot(event):
-		_shoot()
+		_shoot_missile(cursor_position)
+		self.missile_count -= 1

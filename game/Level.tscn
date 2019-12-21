@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://_shared/SinglePixel.png" type="Texture" id=1]
 [ext_resource path="res://game/Ground.png" type="Texture" id=2]
 [ext_resource path="res://entities/player_cursor/PlayerCursor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/missile_silo/MissileSilo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/city/City.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SkyDefenceMockup.png" type="Texture" id=6]
 
 [node name="Level" type="Node"]
 
@@ -33,6 +35,7 @@ __meta__ = {
 
 [node name="PlayerCursor" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 128, 108 )
+move_speed = 200.0
 boundary = Vector2( 126, 90 )
 control_mode = 1
 
@@ -44,6 +47,24 @@ input_action = "player_missile_left"
 position = Vector2( 240, 224 )
 input_action = "player_missile_right"
 
+[node name="City" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 48, 224 )
+
+[node name="City2" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 80, 224 )
+
+[node name="City3" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 112, 224 )
+
+[node name="City4" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 144, 224 )
+
+[node name="City5" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 176, 224 )
+
+[node name="City6" parent="Entities" instance=ExtResource( 5 )]
+position = Vector2( 208, 224 )
+
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,5 +72,10 @@ mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="SkyDefenceMockup" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 6 )
+centered = false
 [connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileSilo" method="_on_PlayerCursor_position_emitted"]
 [connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileSilo2" method="_on_PlayerCursor_position_emitted"]

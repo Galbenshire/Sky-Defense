@@ -13,19 +13,22 @@ __meta__ = {
 [node name="MissileSpawn" type="Position2D" parent="."]
 position = Vector2( 0, -13 )
 
-[node name="AmmoCount" type="Label" parent="."]
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 6.0
-text = "0"
-align = 1
-
 [node name="Hitbox" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, -8 )
 monitoring = false
 collision_mask = 0
 
 [node name="Collision" type="CollisionPolygon2D" parent="Hitbox"]
 polygon = PoolVector2Array( -8, -8, 8, -8, 16, 8, -16, 8 )
+
+[node name="AmmoCount" type="Label" parent="."]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 6.0
+grow_horizontal = 2
+rect_min_size = Vector2( 16, 8 )
+rect_pivot_offset = Vector2( 8, 0 )
+rect_clip_content = true
+text = "0"
+align = 1

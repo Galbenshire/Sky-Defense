@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/city/City.gd" type="Script" id=1]
+[ext_resource path="res://entities/city/City.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 4 )
+
+[node name="City" type="Node2D" groups=[
+"structure",
+]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, -4 )
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -4 )
+hframes = 2
