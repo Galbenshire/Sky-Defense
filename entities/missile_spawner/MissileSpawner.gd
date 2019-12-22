@@ -1,6 +1,8 @@
 tool
 extends Node2D
 
+signal all_missiles_gone()
+
 const MISSILE := preload("res://entities/projectiles/enemy_missile/EnemyMissile.tscn")
 
 export (Resource) var missile_settings : Resource setget set_missile_settings
@@ -51,7 +53,7 @@ func _determine_spawn_missile_count() -> int:
 func _spawn_missile() -> void:
 	var missile = MISSILE.instance()
 	missile.global_position = position + Vector2(rand_range(-x_range, x_range), 0)
-	missile.speed = 20.0
+	missile.speed = missile_settings.missile_speed
 	missile.direction = Vector2.DOWN
 	get_parent().add_child(missile)
 	missile.connect("tree_exited", self, "_on_missile_blew_up")
@@ -64,5 +66,10 @@ func _is_missile_settings_valid() -> bool:
 
 func _on_missile_blew_up() -> void:
 	var missiles_on_screen = get_tree().get_nodes_in_group("enemy_missile").size()
-	if missiles_on_screen < missile_settings.minimum_missile_threshold:
-		spawn_missiles()
+	
+	if _missiles_left > 0:
+		if missiles_on_screen < missile_settings.minimum_missile_threshold:
+			spawn_missiles()
+	else:
+		if missiles_on_screen <= 0:
+			emit_signal("all_missiles_gone")

@@ -41,6 +41,7 @@ func set_enabled(value : bool) -> void:
 	enabled = value
 	set_physics_process(enabled)
 	set_process_unhandled_input(enabled)
+	visible = enabled
 
 func set_boundary(size : Vector2) -> void:
 	boundary = size

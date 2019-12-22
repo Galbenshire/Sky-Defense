@@ -8,6 +8,7 @@ extents = Vector2( 8, 4 )
 
 [node name="City" type="Node2D" groups=[
 "structure",
+"city",
 ]]
 script = ExtResource( 1 )
 __meta__ = {
