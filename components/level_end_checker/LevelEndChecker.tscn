@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://components/level_end_checker/LevelEndChecker.gd" type="Script" id=1]
+
+[node name="LevelEndChecker" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CheckRate" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.35
+[connection signal="timeout" from="CheckRate" to="." method="_on_CheckRate_timeout"]

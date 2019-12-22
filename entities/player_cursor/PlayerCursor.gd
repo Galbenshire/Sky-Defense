@@ -8,9 +8,12 @@ enum CONTROL_MODE {
 
 signal position_emitted(event, position)
 
+
 export (float) var move_speed : float = 200.0
 export (Vector2) var boundary : Vector2 setget set_boundary
 export (CONTROL_MODE) var control_mode : int = CONTROL_MODE.WITH_KEYS
+
+var enabled : bool = true setget set_enabled
 
 var _start_position : Vector2
 
@@ -33,6 +36,12 @@ func _physics_process(delta : float) -> void:
 	
 	_move_cursor(delta)
 	_clamp_cursor()
+
+func set_enabled(value : bool) -> void:
+	enabled = value
+	set_physics_process(enabled)
+	set_process_unhandled_input(enabled)
+	visible = enabled
 
 func set_boundary(size : Vector2) -> void:
 	boundary = size

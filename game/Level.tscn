@@ -1,14 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://_shared/SinglePixel.png" type="Texture" id=1]
-[ext_resource path="res://game/Ground.png" type="Texture" id=2]
-[ext_resource path="res://entities/missile_spawner/MissileSpawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://entities/player_cursor/PlayerCursor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://entities/missile_silo/MissileSilo.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entities/city/City.tscn" type="PackedScene" id=6]
-[ext_resource path="res://SkyDefenceMockup.png" type="Texture" id=7]
+[ext_resource path="res://game/Level.gd" type="Script" id=1]
+[ext_resource path="res://components/level_end_checker/LevelEndChecker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://_shared/SinglePixel.png" type="Texture" id=3]
+[ext_resource path="res://game/assets/Ground.png" type="Texture" id=4]
+[ext_resource path="res://entities/missile_spawner/MissileSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/settings/LevelSettings_Level1.tres" type="Resource" id=6]
+[ext_resource path="res://entities/player_cursor/PlayerCursor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/missile_silo/MissileSilo.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/city/City.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gui/MainTheme.tres" type="Theme" id=10]
+[ext_resource path="res://SkyDefenceMockup.png" type="Texture" id=11]
 
 [node name="Level" type="Node"]
+script = ExtResource( 1 )
+
+[node name="LevelEndChecker" parent="." instance=ExtResource( 2 )]
 
 [node name="Background" type="Node2D" parent="."]
 editor/display_folded = true
@@ -19,7 +26,7 @@ __meta__ = {
 
 [node name="Sky" type="Sprite" parent="Background"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 256, 240 )
@@ -27,60 +34,107 @@ region_rect = Rect2( 0, 0, 256, 240 )
 [node name="Ground" type="Sprite" parent="Background"]
 modulate = Color( 0.921569, 0.827451, 0.12549, 1 )
 position = Vector2( 128, 224 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="Entities" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MissileSpawner" parent="Entities" instance=ExtResource( 3 )]
+[node name="MissileSpawner" parent="Entities" instance=ExtResource( 5 )]
 position = Vector2( 128, -8 )
+missile_settings = ExtResource( 6 )
 x_range = 128.0
 
-[node name="PlayerCursor" parent="Entities" instance=ExtResource( 4 )]
+[node name="PlayerCursor" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 128, 108 )
-move_speed = 200.0
 boundary = Vector2( 126, 90 )
 control_mode = 1
 
-[node name="MissileSilo" parent="Entities" instance=ExtResource( 5 )]
+[node name="MissileSilo" parent="Entities" instance=ExtResource( 8 )]
 position = Vector2( 16, 224 )
 input_action = "player_missile_left"
 
-[node name="MissileSilo2" parent="Entities" instance=ExtResource( 5 )]
+[node name="MissileSilo2" parent="Entities" instance=ExtResource( 8 )]
 position = Vector2( 240, 224 )
 input_action = "player_missile_right"
 
-[node name="City" parent="Entities" instance=ExtResource( 6 )]
+[node name="City" parent="Entities" instance=ExtResource( 9 )]
 position = Vector2( 48, 224 )
 
-[node name="City2" parent="Entities" instance=ExtResource( 6 )]
+[node name="City2" parent="Entities" instance=ExtResource( 9 )]
 position = Vector2( 80, 224 )
 
-[node name="City3" parent="Entities" instance=ExtResource( 6 )]
+[node name="City3" parent="Entities" instance=ExtResource( 9 )]
 position = Vector2( 112, 224 )
 
-[node name="City4" parent="Entities" instance=ExtResource( 6 )]
+[node name="City4" parent="Entities" instance=ExtResource( 9 )]
 position = Vector2( 144, 224 )
 
-[node name="City5" parent="Entities" instance=ExtResource( 6 )]
+[node name="City5" parent="Entities" instance=ExtResource( 9 )]
 position = Vector2( 176, 224 )
 
-[node name="City6" parent="Entities" instance=ExtResource( 6 )]
+[node name="City6" parent="Entities" instance=ExtResource( 9 )]
 position = Vector2( 208, 224 )
 
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="LevelStart" type="Label" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -7.0
+margin_right = 44.0
+margin_bottom = 7.0
+grow_horizontal = 2
+text = "LEVEL START"
+align = 1
+valign = 1
+
+[node name="LevelEnd" type="Label" parent="HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -7.0
+margin_right = 44.0
+margin_bottom = 7.0
+grow_horizontal = 2
+text = "LEVEL END"
+align = 1
+valign = 1
+
+[node name="CitiesSaved" type="Label" parent="HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = 1.0
+margin_right = 56.0
+margin_bottom = 15.0
+grow_horizontal = 2
+text = "6 CITIES SAVED"
+align = 1
+valign = 1
+
 [node name="SkyDefenceMockup" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 centered = false
+[connection signal="end_reached" from="LevelEndChecker" to="." method="_on_LevelEndChecker_end_reached"]
+[connection signal="all_missiles_gone" from="Entities/MissileSpawner" to="." method="_on_MissileSpawner_all_missiles_gone"]
 [connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileSilo" method="_on_PlayerCursor_position_emitted"]
 [connection signal="position_emitted" from="Entities/PlayerCursor" to="Entities/MissileSilo2" method="_on_PlayerCursor_position_emitted"]
