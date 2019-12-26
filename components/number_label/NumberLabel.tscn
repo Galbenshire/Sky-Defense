@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://components/number_label/NumberLabel.gd" type="Script" id=2]
+
+[node name="NumberLabel" type="Label"]
+margin_right = 32.0
+margin_bottom = 8.0
+grow_horizontal = 2
+theme = ExtResource( 1 )
+text = "0"
+align = 1
+clip_text = true
+script = ExtResource( 2 )

@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/Level.gd" type="Script" id=1]
 [ext_resource path="res://components/level_end_checker/LevelEndChecker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://_shared/SinglePixel.png" type="Texture" id=3]
 [ext_resource path="res://game/assets/Ground.png" type="Texture" id=4]
 [ext_resource path="res://entities/missile_spawner/MissileSpawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game/settings/LevelSettings_Level1.tres" type="Resource" id=6]
+[ext_resource path="res://scriptable_objects/objects/level_settings/LevelSettings_Level1.tres" type="Resource" id=6]
 [ext_resource path="res://entities/player_cursor/PlayerCursor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/missile_silo/MissileSilo.tscn" type="PackedScene" id=8]
 [ext_resource path="res://entities/city/City.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui/MainTheme.tres" type="Theme" id=10]
-[ext_resource path="res://SkyDefenceMockup.png" type="Texture" id=11]
+[ext_resource path="res://gui/score_display/ScoreDisplays.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SkyDefenceMockup.png" type="Texture" id=12]
 
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
@@ -48,6 +49,7 @@ x_range = 128.0
 
 [node name="PlayerCursor" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 128, 108 )
+move_speed = 200.0
 boundary = Vector2( 126, 90 )
 control_mode = 1
 
@@ -130,9 +132,13 @@ text = "6 CITIES SAVED"
 align = 1
 valign = 1
 
+[node name="ScoreDisplays" parent="HUD" instance=ExtResource( 11 )]
+margin_top = 8.0
+margin_bottom = 16.0
+
 [node name="SkyDefenceMockup" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 centered = false
 [connection signal="end_reached" from="LevelEndChecker" to="." method="_on_LevelEndChecker_end_reached"]
 [connection signal="all_missiles_gone" from="Entities/MissileSpawner" to="." method="_on_MissileSpawner_all_missiles_gone"]

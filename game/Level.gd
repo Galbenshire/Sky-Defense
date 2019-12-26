@@ -8,7 +8,12 @@ onready var LevelEnd : Label = $HUD/LevelEnd
 onready var CitiesSaved : Label = $HUD/CitiesSaved
 
 func _ready() -> void:
-	print(get_instance_id())
+	_level_start()
+
+func _level_start() -> void:
+	var play_score := preload("res://scriptable_objects/objects/PlayerScore.tres")
+	play_score.value = 0
+	
 	PlayerCursor.enabled = false
 	yield(get_tree().create_timer(3.0), "timeout")
 	PlayerCursor.enabled = true

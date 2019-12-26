@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/projectiles/_base/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/projectiles/enemy_missile/EnemyMissile.gd" type="Script" id=2]
-[ext_resource path="res://components/targetter/StructureTargetter.tscn" type="PackedScene" id=3]
-[ext_resource path="res://components/trail/Trail.tscn" type="PackedScene" id=4]
-[ext_resource path="res://_shared/SinglePixel.png" type="Texture" id=5]
+[ext_resource path="res://components/score_giver/ScoreGiver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/targetter/StructureTargetter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/trail/Trail.tscn" type="PackedScene" id=5]
+[ext_resource path="res://_shared/SinglePixel.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1, 1 )
@@ -14,21 +15,23 @@ extents = Vector2( 1, 1 )
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="StructureTargetter" parent="." index="0" instance=ExtResource( 3 )]
+[node name="ScoreGiver" parent="." index="0" instance=ExtResource( 3 )]
 
-[node name="Hitbox" type="Area2D" parent="." index="2"]
+[node name="StructureTargetter" parent="." index="1" instance=ExtResource( 4 )]
+
+[node name="Hitbox" type="Area2D" parent="." index="3"]
 editor/display_folded = true
 collision_layer = 2
 
 [node name="Collision" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 1 )
 
-[node name="Trail" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Trail" parent="." index="4" instance=ExtResource( 5 )]
 color = Color( 0.858824, 0.254902, 0.380392, 1 )
 
-[node name="Sprite" parent="." index="4"]
+[node name="Sprite" parent="." index="5"]
 position = Vector2( -0.5, -0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 [connection signal="target_acquired" from="StructureTargetter" to="." method="_on_StructureTargetter_target_acquired"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

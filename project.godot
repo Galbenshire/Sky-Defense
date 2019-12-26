@@ -12,10 +12,22 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "LevelSettings",
 "language": "GDScript",
-"path": "res://game/settings/LevelSettings.gd"
+"path": "res://scriptable_objects/scripts/LevelSettings.gd"
+}, {
+"base": "Resource",
+"class": "ScriptableFloat",
+"language": "GDScript",
+"path": "res://scriptable_objects/scripts/ScriptableFloat.gd"
+}, {
+"base": "Resource",
+"class": "ScriptableInt",
+"language": "GDScript",
+"path": "res://scriptable_objects/scripts/ScriptableInt.gd"
 } ]
 _global_script_class_icons={
-"LevelSettings": ""
+"LevelSettings": "",
+"ScriptableFloat": "",
+"ScriptableInt": ""
 }
 
 [application]

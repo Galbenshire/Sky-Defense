@@ -24,7 +24,7 @@ func take_damage_from_missile() -> void:
 	self.missile_count -= 7
 
 func update_ammout_count_label() -> void:
-	AmmoCount.text = str(missile_count)
+	AmmoCount.value = missile_count
 
 func _shoot_missile(target_position : Vector2) -> void:
 	var missile = MISSILE.instance()
